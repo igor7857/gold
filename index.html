@@ -1,55 +1,59 @@
 <!DOCTYPE HTML>
 <html lang="ru">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="viewport" content="height=device-height, initial-scale=1.0">
-	<meta content="text/css">
- 	<title>Голд</title>
- 	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
- 	<link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="height=device-height, initial-scale=1.0">
+    <meta content="text/css">
+    <title>Голд</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h3>Купить голд</h3>
-	<div class="b0">
-	<div>
-		<div class="b2">
-			<p>Заплачу руб</p>
-		</div>
-		<div class="b2">
-			<p>Получу</p>
-		</div>
-	</div>
-
-	<div>
-		<div class="b2">
-			<input id="i_rub" type="number" min="0" oninput="tt()"><br>
-			<button onclick="op('i_rub', -100, 0)">-100</button>
-			<button onclick="op('i_rub', -50, 0)">-50</button>
-			<button onclick="op('i_rub', -5, 0)">-5</button>
-			<button onclick="op('i_rub', +5, 0)">+5</button>
-			<button onclick="op('i_rub', +50, 0)">+50</button>
-			<button onclick="op('i_rub', +100, 0)">+100</button>
-		</div>
-		<div class="b2">
-			<p id="vChm">0 чм по лавке 1/60</p>
-			<p id="vGold">0 голд</p>
-		</div>
-	</div>
-	</div>
-	<script>
-		tt();
-		function tt(){
-			let rub = document.getElementById("i_rub").value;
+    <h2>Купить голд</h2>
+    <div class="forma">
+    <p>заплачу руб</p>
+    <input type="number" id="i_rub" min="0" oninput="tt()">
+        <div class="bt_i">
+            <button onclick="op('i_rub', -50, 0)">-50</button>
+            <button onclick="op('i_rub', -5, 0)">-5</button>
+            <button onclick="op('i_rub', +5, 0)">+5</button>
+            <button onclick="op('i_rub', +50, 0)">+50</button>
+        </div>
+    </div>
+    
+    <div class="forma" style="text-align: right;">
+        <p id="vGold">0 голд</p>
+        <p id="vChm">0 чм по лавке 1/60</p>
+    </div>
+    <div class="footer">
+    	<p style="margin-bottom: 5px;">Новости, обновления, изменения</p>
+    	<a style="margin-right: 3px;" href="https://vk.com/club186336387" target="_blank"><img src="img/vk.png" height="40px" alt="вк"></a>
+    	<a style="margin-left: 3px;" href="https://t.me/WANTRLW" target="_blank"><img src="img/tg.png" height="40px" alt="тг"></a>
+    </div>
+    
+    <script>
+        tt();
+        function tt(){
+            let курс = 0.12;
+            
+            let rub = document.getElementById("i_rub").value;
         	if (rub.length == 0) {rub = 0};
-        
+
         	let gold = rub / 2 * 1000;
         	document.getElementById("vGold").innerHTML = gold + " голд";
 
         	let chm = gold / 60;
         	chm = fix_chm(chm);
         	document.getElementById("vChm").innerHTML = chm + " чм по лавке 1/60";
+        }
+        
+        function op (i, n, temp){
+            temp = Number(document.getElementById(i).value);
+            document.getElementById(i).value = n+temp;
+            if (document.getElementById(i).value < 0) {document.getElementById(i).value = 0};
+            tt()
         }
 
         function fix_chm(a){
@@ -66,15 +70,6 @@
             }
             return a;
         }
-
-        function op (i, n, temp){
-            temp = Number(document.getElementById(i).value);
-            document.getElementById(i).value = n+temp;
-            if (document.getElementById(i).value < 0){
-            	document.getElementById(i).value = 0
-            };
-            tt()
-        }
-	</script>
+    </script>
 </body>
 </html>
