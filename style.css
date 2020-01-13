@@ -19,13 +19,12 @@ h3{
 .b2{
     vertical-align: middle;
     text-align: center;
-    display: inline-block;
-    width: 49%;
+    width: 100%;
 }
 input{
     text-align: center;
     margin-top: 5px;
-    width: 90%;
+    width: 15%;
     font-size: 16px;
 }
 button{
