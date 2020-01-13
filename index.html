@@ -16,21 +16,23 @@
 	<div>
 		<div class="b2">
 			<p>Заплачу руб</p>
+			<button onclick="op('i_rub', -100, 0)">-100</button>
+			<button onclick="op('i_rub', -50, 0)">-50</button>
+			<button onclick="op('i_rub', -5, 0)">-5</button>
+			<input id="i_rub" type="number" min="0" oninput="tt()">
+			<button onclick="op('i_rub', +5, 0)">+5</button>
+			<button onclick="op('i_rub', +50, 0)">+50</button>
+			<button onclick="op('i_rub', +100, 0)">+100</button>
 		</div>
 		<div class="b2">
+			<br>
 			<p>Получу</p>
 		</div>
 	</div>
 
 	<div>
 		<div class="b2">
-			<input id="i_rub" type="number" min="0" oninput="tt()"><br>
-			<button onclick="op('i_rub', -100, 0)">-100</button>
-			<button onclick="op('i_rub', -50, 0)">-50</button>
-			<button onclick="op('i_rub', -5, 0)">-5</button>
-			<button onclick="op('i_rub', +5, 0)">+5</button>
-			<button onclick="op('i_rub', +50, 0)">+50</button>
-			<button onclick="op('i_rub', +100, 0)">+100</button>
+			
 		</div>
 		<div class="b2">
 			<p id="vChm">0 чм по лавке 1/60</p>
