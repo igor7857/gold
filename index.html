@@ -11,65 +11,64 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Купить голд</h2>
-    <div class="forma">
-    <p>заплачу руб</p>
-    <input type="number" id="i_rub" min="0" oninput="tt()">
-        <div class="bt_i">
-            <button onclick="op('i_rub', -50, 0)">-50</button>
-            <button onclick="op('i_rub', -5, 0)">-5</button>
-            <button onclick="op('i_rub', +5, 0)">+5</button>
-            <button onclick="op('i_rub', +50, 0)">+50</button>
-        </div>
-    </div>
-    
-    <div class="forma" style="text-align: right;">
-        <p id="vGold">0 голд</p>
-        <p id="vChm">0 чм по лавке 1/60</p>
-    </div>
-    <div class="footer">
-    	<p style="margin-bottom: 5px;">Новости, обновления, изменения</p>
-    	<a style="margin-right: 3px;" href="https://vk.com/club186336387" target="_blank"><img src="img/vk.png" height="40px" alt="вк"></a>
-    	<a style="margin-left: 3px;" href="https://t.me/WANTRLW" target="_blank"><img src="img/tg.png" height="40px" alt="тг"></a>
-    </div>
-    
-    <script>
-        tt();
-        function tt(){
-            let курс = 0.12;
-            
-            let rub = document.getElementById("i_rub").value;
-        	if (rub.length == 0) {rub = 0};
+	<h2>Купить голд</h2>
+	<div class="forma">
+		<p>заплачу руб</p>
+		<input type="number" id="i_rub" min="0" oninput="tt()">
+		<div class="bt_i">
+			<button onclick="op('i_rub', -50, 0)">-50</button>
+			<button onclick="op('i_rub', -5, 0)">-5</button>
+			<button onclick="op('i_rub', +5, 0)">+5</button>
+			<button onclick="op('i_rub', +50, 0)">+50</button>
+		</div>
+	</div>
 
-        	let gold = rub / 2 * 1000;
-        	document.getElementById("vGold").innerHTML = gold + " голд";
+	<div class="forma" style="text-align: right;">
+		<p id="vGold">0 голд</p>
+		<p id="vChm">0 чм по лавке 1/60</p>
+	</div>
 
-        	let chm = gold / 60;
-        	chm = fix_chm(chm);
-        	document.getElementById("vChm").innerHTML = chm + " чм по лавке 1/60";
-        }
-        
-        function op (i, n, temp){
-            temp = Number(document.getElementById(i).value);
-            document.getElementById(i).value = n+temp;
-            if (document.getElementById(i).value < 0) {document.getElementById(i).value = 0};
-            tt()
-        }
+	<div class="footer">
+		<p style="margin-bottom: 5px;">Новости, обновления, изменения</p>
+		<a style="margin-right: 3px;" href="https://vk.com/club186336387" target="_blank"><img src="img/vk.png" height="40px" alt="вк"></a>
+		<a style="margin-left: 3px;" href="https://t.me/WANTRLW" target="_blank"><img src="img/tg.png" height="40px" alt="тг"></a>
+	</div>
 
-        function fix_chm(a){
-            a = a.toFixed(2);
-            if (a >= 416) {
-            	a = a / 10;
-            	a = Math.ceil(a); //округлить вверх до целого
-            	a = a * 10;
-            }
-            if (a < 416) {
-                a = a / 10;
-                a = Math.floor(a); // округлить вниз до целого
-                a = a * 10;
-            }
-            return a;
-        }
-    </script>
+	<script>
+		tt();
+		function tt(){
+			let rub = document.getElementById("i_rub").value;
+			if (rub.length == 0) {rub = 0};
+
+			let gold = rub / 2 * 1000;
+			document.getElementById("vGold").innerHTML = gold + " голд";
+
+			let chm = gold / 60;
+			chm = fix_chm(chm);
+			document.getElementById("vChm").innerHTML = chm + " чм по лавке 1/60";
+		}
+
+		function op (i, n, temp){
+			temp = Number(document.getElementById(i).value);
+			document.getElementById(i).value = n+temp;
+			if (document.getElementById(i).value < 0) {document.getElementById(i).value = 0};
+			tt()
+		}
+
+		function fix_chm(a){
+			a = a.toFixed(2);
+			if (a >= 416) {
+				a = a / 10;
+				a = Math.ceil(a); //округлить вверх до целого
+				a = a * 10;
+			}
+			if (a < 416) {
+				a = a / 10;
+				a = Math.floor(a); // округлить вниз до целого
+				a = a * 10;
+			}
+			return a;
+		}
+	</script>
 </body>
 </html>
